@@ -359,6 +359,79 @@ padding:1rem;
 }
 
 
+/* Workout type colors */
+
+.card.plan-card {
+  background: #1c1c35;
+  border: 2px solid transparent;
+}
+
+.card.plan-card.push {
+  border-color: #ff4d9d;
+}
+
+.card.plan-card.pull {
+  border-color: #a855f7;
+}
+
+.card.plan-card.legs {
+  border-color: #38bdf8;
+}
+
+/* Workout progress */
+
+.progress-panel {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-header span {
+  color: #a855f7;
+  font-weight: bold;
+}
+
+.progress-panel progress {
+  width: 100%;
+  height: 14px;
+  margin: 0;
+  appearance: none;
+}
+
+.progress-panel progress::-webkit-progress-bar {
+  background: #2a2a45;
+  border: none;
+  border-radius: 20px;
+}
+
+.progress-panel progress::-webkit-progress-value {
+  background: linear-gradient(
+    90deg,
+    #ff4d9d,
+    #a855f7,
+    #38bdf8
+  );
+  border-radius: 20px;
+}
+
+.progress-panel progress::-moz-progress-bar {
+  background: linear-gradient(
+    90deg,
+    #ff4d9d,
+    #a855f7,
+    #38bdf8
+  );
+  border-radius: 20px;
+}
+
 .modal-container {
     position: fixed;
     top: 0;

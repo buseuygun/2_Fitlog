@@ -10,10 +10,19 @@ export default function Grid() {
 
   const completedWorkouts = Object.keys(savedWorkouts || {}).filter((val) => {
     const entry = savedWorkouts[val]
-    return entry.isComplete
-  })
+    
+    return entry.isComplete;
+  });
 
+const totalWorkouts = Object.keys(training_plan).length;
 
+const completedCount = completedWorkouts.length;
+
+const progressPercentage = totalWorkouts > 0
+  ? Math.round((completedCount / totalWorkouts) * 100)
+  : 0;
+
+  
   function handleSave(index, data) {
     // save to local storage and mıdify the sdaved workouts statwe
     const newObj = {
@@ -55,7 +64,26 @@ export default function Grid() {
 
   return (
     <div className="training-plan-grid">
-      {Object.keys(training_plan).map((workout, workoutIndex) => {
+
+<section className="progress-panel">
+  <div className="progress-header">
+    <h3>Your Progress</h3>
+    <span>{progressPercentage}%</span>
+  </div>
+
+  <progress
+    value={completedCount}
+    max={totalWorkouts}
+    aria-label="Completed workouts"
+  />
+
+  <p>
+    {completedCount} of {totalWorkouts} workouts completed
+  </p>
+</section>
+
+      {Object.keys(training_plan).map((workout, workoutIndex) => 
+      {
 
         const isLocked = workoutIndex === 0 ? false :
           !completedWorkouts.includes(`${workoutIndex - 1}`)
@@ -90,7 +118,10 @@ export default function Grid() {
             
             if (isLocked) {return}
             
-            setSelectedWorkout(workoutIndex) }} className={'card plan-card ' + (isLocked ? 'inactive' : '')}
+            setSelectedWorkout(workoutIndex) }} 
+            
+            className={`card plan-card ${type.toLowerCase()} ${isLocked ? 'inactive' : ''}`}
+
             key={workoutIndex}>
             <div className='plan-card-header'>
               <p>Day {dayNum}</p>
