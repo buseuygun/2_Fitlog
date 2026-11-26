@@ -1,6 +1,6 @@
 # 🏋️ Fitlog
 
-**Brogram | The Simple 30 WOs Training Plan**
+**FitLog | The Simple 30 Workout Training Plan**
 
 A simple workout tracker built with React. Follow a 30-workout training plan and see your progress at a glance.
 
